@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Engineer Portfolio — Data Engineering &amp; Distributed Microservices</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#0891b2",
+            "primary-hover": "#0e7490",
+            "secondary": "#059669",
+            "tertiary": "#6366f1",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "surface-container": "#f1f5f9",
+            "surface-container-high": "#e2e8f0",
+            "surface-container-low": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#cbd5e1",
+            "on-surface": "#0f172a",
+            "on-surface-variant": "#475569",
+            "outline": "#94a3b8",
+            "outline-variant": "#e2e8f0"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-2xl": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "code-inline": ["JetBrains Mono", "monospace"],
+            "code-block": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body
+  class="bg-background font-body-md text-on-surface antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col justify-between">
+  <!-- Minimal Top Navigation -->
+  <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"><a
+        class="flex items-center gap-2 group text-slate-900 hover:text-primary transition-colors" href="#about">
+        <div
+          class="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center font-code-inline font-semibold text-primary text-sm group-hover:border-primary/50 transition-colors">
+          SE</div><span class="font-headline-sm text-sm font-semibold tracking-tight text-slate-900">Thusitha Niroshan Kularathna <span
+            class="text-slate-500 font-normal font-code-inline text-xs ml-1.5 hidden sm:inline">//
+            portfolio</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-body-md"><a
+          class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#about">About</a><a
+          class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#stack">Stack</a><a
+          class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#projects">Projects</a><a
+          class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#articles">Articles</a><a
+          class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#contact">Contact</a></nav>
+      <div class="flex items-center gap-3"><a aria-label="GitHub Profile"
+          class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-primary hover:bg-slate-100 transition-colors"
+          href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current"
+            viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+            </path>
+          </svg></a><a aria-label="LinkedIn Profile"
+          class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-primary hover:bg-slate-100 transition-colors"
+          href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current"
+            viewBox="0 0 24 24">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+            </path>
+          </svg></a><a
+          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-code-inline text-slate-700 bg-white shadow-sm px-3 py-1.5 rounded-lg border border-slate-300 hover:border-primary hover:text-primary transition-colors"
+          href="mailto:niroshan.kdt@gmail.com"><span>Get in touch</span><span
+            class="material-symbols-outlined text-[14px]">arrow_outward</span></a></div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 w-full space-y-24 py-16">
+    <!-- Minimal Hero -->
+    <section class="space-y-8 pt-4" id="about"><!-- Status Badge -->
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-code-inline text-emerald-800">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span><span>Available for
+          engineering roles &amp; consulting</span></div><!-- Core Headline -->
+      <div class="space-y-4 max-w-3xl">
+        <h1
+          class="font-headline-2xl text-3xl sm:text-4xl lg:text-[42px] leading-tight font-bold text-slate-900 tracking-tight">
+          Software Engineer specializing in <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-600">Data Engineering</span>
+          &amp; Distributed Microservices.</h1>
+        <p class="font-body-lg text-lg text-slate-600 leading-relaxed font-normal">Architecting reliable, large-scale
+          data pipelines and low-latency microservice ecosystems with Java and cloud-native backbones. Focused on
+          operational determinism, high throughput, and pragmatic web application engineering.</p>
+      </div><!-- Action Links -->
+      <div class="flex flex-wrap items-center gap-4 pt-2 font-code-inline text-xs"><a
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 text-white font-semibold hover:bg-cyan-700 transition-colors shadow-sm"
+          href="#projects"><span>View Projects</span><span
+            class="material-symbols-outlined text-[16px]">arrow_downward</span></a><a
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white text-slate-800 hover:text-primary hover:bg-slate-50 border border-slate-300 shadow-sm transition-colors"
+          href="#articles"><span>Read Articles</span><span
+            class="material-symbols-outlined text-[16px]">article</span></a><a
+          class="inline-flex items-center gap-1.5 text-slate-600 hover:text-primary px-3 py-2 transition-colors"
+          href="https://github.com" rel="noopener noreferrer" target="_blank"><span
+            class="material-symbols-outlined text-[16px]">terminal</span><span>GitHub Profile</span></a><a
+          class="inline-flex items-center gap-1.5 text-slate-600 hover:text-primary px-3 py-2 transition-colors"
+          href="mailto:niroshan.kdt@gmail.com"><span class="material-symbols-outlined text-[16px]">mail</span><span>Email
+            Me</span></a></div>
+    </section>
+    <!-- Core Tech Stack -->
+    <section class="space-y-6 pt-4 border-t border-slate-200" id="stack">
+      <div class="flex items-center justify-between">
+        <div class="space-y-1">
+          <p class="font-label-sm text-xs text-cyan-700 uppercase tracking-widest font-code-inline font-semibold">// 01
+            — Tools &amp; Foundations</p>
+          <h2 class="font-headline-lg text-2xl font-bold text-slate-900">Core Tech Stack</h2>
+        </div><span class="font-label-sm text-xs text-slate-500 font-code-inline hidden sm:inline">Production
+          Experience</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Backend & Microservices -->
+        <div
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition-colors flex flex-col justify-between space-y-4">
+          <div class="space-y-1"><span class="material-symbols-outlined text-cyan-600 text-[20px]">dns</span>
+            <h3 class="font-headline-sm text-sm font-semibold text-slate-900">Backend &amp; Microservices</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5"><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Java</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Spring
+              Boot</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">REST</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">gRPC</span>
+          </div>
+        </div>
+        <!-- Data Engineering -->
+        <div
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition-colors flex flex-col justify-between space-y-4">
+          <div class="space-y-1"><span class="material-symbols-outlined text-emerald-600 text-[20px]">dataset</span>
+            <h3 class="font-headline-sm text-sm font-semibold text-slate-900">Data Engineering</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5"><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Apache
+              Spark</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Kafka</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">SQL
+              / NoSQL</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Data
+              Pipelines</span></div>
+        </div>
+        <!-- Cloud & DevOps -->
+        <div
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition-colors flex flex-col justify-between space-y-4">
+          <div class="space-y-1"><span class="material-symbols-outlined text-indigo-600 text-[20px]">cloud_sync</span>
+            <h3 class="font-headline-sm text-sm font-semibold text-slate-900">Cloud &amp; DevOps</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5"><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Kubernetes</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Docker</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">CI/CD</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Cloud
+              Infra</span></div>
+        </div>
+        <!-- Frontend -->
+        <div
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition-colors flex flex-col justify-between space-y-4">
+          <div class="space-y-1"><span class="material-symbols-outlined text-sky-600 text-[20px]">web</span>
+            <h3 class="font-headline-sm text-sm font-semibold text-slate-900">Frontend</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5"><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Vue.js</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">Angular</span><span
+              class="px-2.5 py-1 rounded bg-slate-100 border border-slate-200/60 font-code-inline text-xs text-slate-700">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Projects -->
+    <section class="space-y-6 pt-4 border-t border-slate-200" id="projects">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div class="space-y-1">
+          <p class="font-label-sm text-xs text-cyan-700 uppercase tracking-widest font-code-inline font-semibold">// 02
+            — Selected Work</p>
+          <h2 class="font-headline-lg text-2xl font-bold text-slate-900">Featured Projects</h2>
+        </div><a
+          class="font-code-inline text-xs text-slate-600 hover:text-primary transition-colors flex items-center gap-1"
+          href="https://github.com" rel="noopener noreferrer" target="_blank"><span>More repositories on
+            GitHub</span><span class="material-symbols-outlined text-[14px]">arrow_outward</span></a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Project 1 -->
+        <article
+          class="p-6 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div class="w-full mb-4 overflow-hidden rounded-lg border border-slate-200/80 bg-slate-50"><img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQGCSMhiKYVxj2PzJqG3kruEH8ZdyOH6aXR2H-hEOQxOpwuMpLfOn4pqVmQ6W1IfM4GaYm_HHwT3mABGjbDbOnrhqj2WWHewiqgxvJyFZ5LfN0mxk-xaCjQjLR-cRBV3wkpJm-iVor3GO85eZ-Y0mIL0KVTJNGmXHYUk8_sR4nl0B9gSobEM9fTNwKizAoAB6wwIUOMtO2ASvmPwQiyJUMZL70Gi4KLDNBdOmMb7c7"
+              alt="Distributed ETL &amp; Stream Pipeline Architecture Diagram"
+              class="w-full h-44 object-cover hover:scale-[1.02] transition-transform duration-300"></div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between"><span
+                class="font-code-inline text-xs text-emerald-700 font-semibold uppercase tracking-wider">Stream &amp;
+                Batch</span>
+              <div class="flex items-center gap-2"><span
+                  class="font-code-inline text-[11px] text-slate-600 px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Live
+                  Docs</span><a aria-label="GitHub Repository"
+                  class="text-slate-400 hover:text-slate-900 transition-colors" href="https://github.com"
+                  rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                    </path>
+                  </svg></a></div>
+            </div>
+            <h3
+              class="font-headline-sm text-lg font-bold text-slate-900 group-hover:text-primary transition-colors flex items-center justify-between">
+              Distributed ETL &amp; Stream Pipeline</h3>
+            <p class="font-body-sm text-sm text-slate-600 leading-relaxed">High-throughput data ingestion and
+              transformation platform. Processes continuous telemetry logs with exactly-once Kafka semantics and
+              partitioned Spark jobs deployed as Dockerized workers.</p>
+          </div>
+          <div class="pt-5 space-y-3">
+            <div class="flex flex-wrap gap-1.5"><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Apache
+                Spark</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Kafka</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Docker</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Java</span>
+            </div><a
+              class="inline-flex items-center gap-1.5 font-code-inline text-xs text-primary font-semibold hover:underline pt-1"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><span>View Code</span><span
+                class="material-symbols-outlined text-[14px]">arrow_outward</span></a>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article
+          class="p-6 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div class="w-full mb-4 overflow-hidden rounded-lg border border-slate-200/80 bg-slate-50"><img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCplfLzX8S5zqhjsQrFB2ISTXDOuBN3KgTaF_YbmtBkX4aGqUDsEQcKP4PoIaJuvNZbf19TULRFtAFqoKUbwQrrkyoYsZ7QuAUCU6hSWhE7BaTe1-e1OlWsI-QNAx1UjYI04bZSz8ciYg5nG3ZMGC3UZkrFJMEGr-ya1ib_7RqbZtKCOas3wfdDciLfwiUGtJSGpICa1_dQuZuUNfgNQoA6dMbvhTFbUzmIXg1iaRwK"
+              alt="Resilient Cloud Microservices Suite Architecture Diagram"
+              class="w-full h-44 object-cover hover:scale-[1.02] transition-transform duration-300"></div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between"><span
+                class="font-code-inline text-xs text-cyan-700 font-semibold uppercase tracking-wider">Cloud
+                Platform</span><a aria-label="GitHub Repository"
+                class="text-slate-400 hover:text-slate-900 transition-colors" href="https://github.com"
+                rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                  </path>
+                </svg></a></div>
+            <h3
+              class="font-headline-sm text-lg font-bold text-slate-900 group-hover:text-primary transition-colors flex items-center justify-between">
+              Resilient Cloud Microservices Suite</h3>
+            <p class="font-body-sm text-sm text-slate-600 leading-relaxed">Event-driven microservices architecture built
+              on Java 21 and Spring Cloud. Includes decentralized circuit breakers (Resilience4j), unified API gateway
+              routing, and declarative Kubernetes Helm deployments.</p>
+          </div>
+          <div class="pt-5 space-y-3">
+            <div class="flex flex-wrap gap-1.5"><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Java
+                21</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Spring
+                Boot</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Kubernetes</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Docker</span>
+            </div><a
+              class="inline-flex items-center gap-1.5 font-code-inline text-xs text-primary font-semibold hover:underline pt-1"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><span>View Code</span><span
+                class="material-symbols-outlined text-[14px]">arrow_outward</span></a>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article
+          class="p-6 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div class="w-full mb-4 overflow-hidden rounded-lg border border-slate-200/80 bg-slate-50"><img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN23fUv-v2zHfmyZkjEb21V8loKuZQXxGqtMqa-tXqAka1mjv_YvpbGXuEop9gJBptXiwgW7KDR4H2a7ZF4Z1vosoDdIL2R00dyxXunjasSACV5REkojLx_4MBczsh3292IC2fp2TJ04M8HozxP_NVBJjQoSxoIyN49PaNJssEzYkLFFgqMq5u_hOQmIiRK4PKMDBRX-VvE8A6pj1gccd7_I57hhctlk1TZT6E9_Bz"
+              alt="Real-Time Telemetry &amp; Analytics Platform Architecture Diagram"
+              class="w-full h-44 object-cover hover:scale-[1.02] transition-transform duration-300"></div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between"><span
+                class="font-code-inline text-xs text-indigo-600 font-semibold uppercase tracking-wider">Full-Stack
+                Data</span><a aria-label="GitHub Repository"
+                class="text-slate-400 hover:text-slate-900 transition-colors" href="https://github.com"
+                rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                  </path>
+                </svg></a></div>
+            <h3
+              class="font-headline-sm text-lg font-bold text-slate-900 group-hover:text-primary transition-colors flex items-center justify-between">
+              Real-Time Telemetry &amp; Analytics Platform</h3>
+            <p class="font-body-sm text-sm text-slate-600 leading-relaxed">End-to-end telemetry system aggregating
+              server metrics via Apache Spark streaming, serving real-time aggregates over WebSocket APIs to a modular
+              Vue.js reactive frontend dashboard.</p>
+          </div>
+          <div class="pt-5 space-y-3">
+            <div class="flex flex-wrap gap-1.5"><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Spark</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Spring
+                Boot</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Vue.js</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Kubernetes</span>
+            </div><a
+              class="inline-flex items-center gap-1.5 font-code-inline text-xs text-primary font-semibold hover:underline pt-1"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><span>View Code</span><span
+                class="material-symbols-outlined text-[14px]">arrow_outward</span></a>
+          </div>
+        </article>
+        <!-- Project 4 -->
+        <article
+          class="p-6 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div class="w-full mb-4 overflow-hidden rounded-lg border border-slate-200/80 bg-slate-50"><img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4DAdEbtByEi8qDCWkp93kJqTQ_Z8ipBxiD5LsoSPrQ1gwHbY79ouqlmcy5GqSy2YIG8gWBM8ct0MwrrYWnYTyA259LU8MMRwEeNrLB-Ff55uERqfwTh7_GqlKXDovQc_YjKIW-y4JPumcZgojrQ4CTzFOid-UKs5eqlE0PVi4pA533Di2l6SilCqXpIr3E8pimH1A_v3GSeIhIawwv4HAvW5ttgN7-7G63336ywXF"
+              alt="Enterprise Workflow Management Portal Architecture Diagram"
+              class="w-full h-44 object-cover hover:scale-[1.02] transition-transform duration-300"></div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between"><span
+                class="font-code-inline text-xs text-cyan-700 font-semibold uppercase tracking-wider">Enterprise
+                Systems</span><a aria-label="GitHub Repository"
+                class="text-slate-400 hover:text-slate-900 transition-colors" href="https://github.com"
+                rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                  </path>
+                </svg></a></div>
+            <h3
+              class="font-headline-sm text-lg font-bold text-slate-900 group-hover:text-primary transition-colors flex items-center justify-between">
+              Enterprise Workflow Management Portal</h3>
+            <p class="font-body-sm text-sm text-slate-600 leading-relaxed">Full-stack internal orchestration portal
+              facilitating multi-step approval graphs, RBAC permissions, and asynchronous task workers backed by Spring
+              Boot REST APIs and an Angular client.</p>
+          </div>
+          <div class="pt-5 space-y-3">
+            <div class="flex flex-wrap gap-1.5"><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Angular</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Java
+                Spring Boot</span><span
+                class="font-code-inline text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60">Docker</span>
+            </div><a
+              class="inline-flex items-center gap-1.5 font-code-inline text-xs text-primary font-semibold hover:underline pt-1"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><span>View Code</span><span
+                class="material-symbols-outlined text-[14px]">arrow_outward</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Technical Articles & Writing -->
+    <section class="space-y-6 pt-4 border-t border-slate-200" id="articles">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div class="space-y-1">
+          <p class="font-label-sm text-xs text-cyan-700 uppercase tracking-widest font-code-inline font-semibold">// 03
+            — Technical Writing</p>
+          <h2 class="font-headline-lg text-2xl font-bold text-slate-900">Articles &amp; Engineering Notes</h2>
+        </div><span class="font-body-sm text-xs text-slate-500 hidden sm:inline">Published on Medium, Dev.to &amp;
+          Substack</span>
+      </div>
+      <div class="space-y-4">
+        <!-- Article 1 -->
+        <article
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all space-y-3 group">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-code-inline">
+            <div class="flex items-center gap-2"><span
+                class="px-2 py-0.5 rounded bg-cyan-50 border border-cyan-200 text-cyan-800 font-medium">Medium</span><span
+                class="text-slate-300">•</span><span class="text-slate-500">8 min read</span></div><a
+              class="inline-flex items-center gap-1 text-slate-500 hover:text-emerald-700 transition-colors"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-3.5 h-3.5 fill-current"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                </path>
+              </svg><span>Companion Demo Repo</span></a>
+          </div>
+          <h3
+            class="font-headline-sm text-base sm:text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">
+            <a class="flex items-center gap-1.5" href="https://medium.com" rel="noopener noreferrer"
+              target="_blank"><span>Optimizing Apache Spark Jobs for Large-Scale Data Pipelines</span><span
+                class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_outward</span></a>
+          </h3>
+          <p class="font-body-sm text-sm text-slate-600 leading-relaxed">A practical deep dive into tuning partition
+            sizes, managing shuffle spill, eliminating skewed tasks, and memory allocation strategies for high-volume
+            enterprise pipelines.</p>
+          <div class="pt-1"><a
+              class="inline-flex items-center gap-1 text-xs font-code-inline text-primary font-semibold hover:underline"
+              href="https://medium.com" rel="noopener noreferrer" target="_blank"><span>Read on Medium</span><span
+                class="material-symbols-outlined text-[14px]">call_made</span></a></div>
+        </article>
+        <!-- Article 2 -->
+        <article
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all space-y-3 group">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-code-inline">
+            <div class="flex items-center gap-2"><span
+                class="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 font-medium">Dev.to</span><span
+                class="text-slate-300">•</span><span class="text-slate-500">6 min read</span></div><a
+              class="inline-flex items-center gap-1 text-slate-500 hover:text-emerald-700 transition-colors"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-3.5 h-3.5 fill-current"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                </path>
+              </svg><span>Starter Architecture Template</span></a>
+          </div>
+          <h3
+            class="font-headline-sm text-base sm:text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">
+            <a class="flex items-center gap-1.5" href="https://dev.to" rel="noopener noreferrer"
+              target="_blank"><span>Production-Grade Microservices with Spring Boot &amp; Kubernetes</span><span
+                class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_outward</span></a>
+          </h3>
+          <p class="font-body-sm text-sm text-slate-600 leading-relaxed">Designing resilient Java microservices:
+            graceful degradation patterns, Kubernetes readiness &amp; liveness probes, and distributed correlation
+            tracking.</p>
+          <div class="pt-1"><a
+              class="inline-flex items-center gap-1 text-xs font-code-inline text-primary font-semibold hover:underline"
+              href="https://dev.to" rel="noopener noreferrer" target="_blank"><span>Read on Dev.to</span><span
+                class="material-symbols-outlined text-[14px]">call_made</span></a></div>
+        </article>
+        <!-- Article 3 -->
+        <article
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all space-y-3 group">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-code-inline">
+            <div class="flex items-center gap-2"><span
+                class="px-2 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 font-medium">Engineering
+                Blog</span><span class="text-slate-300">•</span><span class="text-slate-500">5 min read</span></div><a
+              class="inline-flex items-center gap-1 text-slate-500 hover:text-emerald-700 transition-colors"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-3.5 h-3.5 fill-current"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                </path>
+              </svg><span>TypeScript DTO Generator</span></a>
+          </div>
+          <h3
+            class="font-headline-sm text-base sm:text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">
+            <a class="flex items-center gap-1.5" href="#" rel="noopener noreferrer"><span>Bridging Enterprise Java
+                Backends with Modern Vue and Angular Frontends</span><span
+                class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_outward</span></a>
+          </h3>
+          <p class="font-body-sm text-sm text-slate-600 leading-relaxed">Techniques for automated TypeScript contract
+            generation from Java OpenAPI definitions to keep frontend teams in sync with distributed service changes.
+          </p>
+          <div class="pt-1"><a
+              class="inline-flex items-center gap-1 text-xs font-code-inline text-primary font-semibold hover:underline"
+              href="#"><span>Read Article</span><span class="material-symbols-outlined text-[14px]">call_made</span></a>
+          </div>
+        </article>
+        <!-- Article 4 -->
+        <article
+          class="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all space-y-3 group">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-code-inline">
+            <div class="flex items-center gap-2"><span
+                class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-medium">Substack</span><span
+                class="text-slate-300">•</span><span class="text-slate-500">7 min read</span></div><a
+              class="inline-flex items-center gap-1 text-slate-500 hover:text-emerald-700 transition-colors"
+              href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-3.5 h-3.5 fill-current"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                </path>
+              </svg><span>Kube-Rolling Script Repo</span></a>
+          </div>
+          <h3
+            class="font-headline-sm text-base sm:text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">
+            <a class="flex items-center gap-1.5" href="https://substack.com" rel="noopener noreferrer"
+              target="_blank"><span>Zero-Downtime Deployments &amp; Container Orchestration with Docker &amp;
+                K8s</span><span
+                class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_outward</span></a>
+          </h3>
+          <p class="font-body-sm text-sm text-slate-600 leading-relaxed">Rolling update configurations, termination
+            grace periods, connection draining, and battle-tested ingress traffic shifts without dropping a single
+            active transaction.</p>
+          <div class="pt-1"><a
+              class="inline-flex items-center gap-1 text-xs font-code-inline text-primary font-semibold hover:underline"
+              href="https://substack.com" rel="noopener noreferrer" target="_blank"><span>Read on Substack</span><span
+                class="material-symbols-outlined text-[14px]">call_made</span></a></div>
+        </article>
+      </div>
+    </section>
+    <!-- Simple Minimal Contact -->
+    <section class="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-6" id="contact">
+      <div class="max-w-2xl space-y-2">
+        <p class="font-label-sm text-xs text-cyan-700 uppercase tracking-widest font-code-inline font-semibold">// 04 —
+          Contact</p>
+        <h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-slate-900">Let's connect</h2>
+        <p class="font-body-md text-slate-600 text-base">Always open to discussions regarding staff/senior data
+          engineering roles, distributed microservice contracts, or technical consulting. Reach out directly.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 pt-2"><a
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-700 text-white font-code-inline text-xs font-bold hover:bg-cyan-800 transition-all shadow-sm"
+          href="mailto:niroshan.kdt@gmail.com"><span
+            class="material-symbols-outlined text-[16px]">mail</span><span>niroshan.kdt@gmail.com</span></a><a
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-100 text-slate-800 font-code-inline text-xs hover:text-primary hover:bg-slate-200/70 border border-slate-200 transition-colors"
+          href="https://github.com" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current"
+            viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+            </path>
+          </svg><span>GitHub</span></a><a
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-100 text-slate-800 font-code-inline text-xs hover:text-primary hover:bg-slate-200/70 border border-slate-200 transition-colors"
+          href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current"
+            viewBox="0 0 24 24">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+            </path>
+          </svg><span>LinkedIn</span></a></div>
+    </section>
+  </main>
+  <!-- Minimal Footer -->
+  <footer class="w-full border-t border-slate-200 bg-white py-8">
+    <div
+      class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-body-sm text-slate-500">
+      <div class="flex items-center gap-2"><span class="font-code-inline text-slate-800 font-medium">Thusitha Niroshan Kularathna</span><span>•</span><span>Software Engineer</span></div>
+      <p class="font-code-inline text-[11px] text-slate-500">© 2025. Designed with minimal restraint and clear
+        typography.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
